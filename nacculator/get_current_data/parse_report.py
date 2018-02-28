@@ -1,10 +1,17 @@
 import sys
 import os
 import xml.etree.ElementTree as ET
+import ConfigParser
 from email.mime.text import MIMEText
 from jinja2 import Environment
 
 import send_email as sm
+
+
+def read_config(config_path):
+    config = ConfigParser.ConfigParser()
+    config.read(config_path)
+    return config
 
 
 def generate_report_csv(input_file):
@@ -328,7 +335,10 @@ def generate_report_csv(input_file):
             page3_result=page3_result
         ), "html"
     )
-    recipient = ['rsengupta@ufl.edu', 'rouknasengupta@gmail.com']
+
+    config = read_config("smtp_config_example.ini")
+    recipient = config.get('recipient_list', 'hcv_recipient')
+    recipient = recipient.split(",")
     sm.send_email(recipient, 'UDS REPORT', msg)
 
 
