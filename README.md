@@ -13,43 +13,16 @@ git clone -b nacc_docker https://github.com/roukna/nacculator.git
 
 ### Prerequisites
 
-Update the credentials in the **packet_config_example.ini** file as below:
+Update the credentials in the **env_file** file as below:
 ```bash
-cd nacculator/get_current_data
-vi packet_config_example.ini
+vi env_file
 ```
-```
-[DEFAULT]
-
-[credentials]
-username: <username>
-password: <password>
-email: <email_id>
-[uploadpath]
-path: /path/to/text/file/to/upload
-[downloadpath]
-path: /tmp
-[reportpath]
-path: /Users/rsengupta/Downloads
-```
-Update the smtp credentials and e-mail recipients in the **smtp_config_example.ini** file as below:
-
 ```bash
-cd nacculator/get_current_data
-vi smtp_config_example.ini
-```
-
-```
-[DEFAULT]
-
-[credentials]
-host: smtp.ufl.edu
-port: 587
-my_address: <gator_name>
-password: <gator_password>
-
-[recipient_list]
-hcv_recipient: rouknasengupta@gmail.com,rsengupta@ufl.edu,amineni95@ufl.edu
+USERNAME=nacc_user
+PASSWORD=password
+SMTP_USER=gator_name
+SMTP_PASSWORD=gator_password
+RECIPIENTS=rouknasengupta@gmail.com,rsengupta@ufl.edu
 ```
 
 ### Building the docker image
@@ -70,5 +43,6 @@ gunzip -c nacc_image.tar.gz | docker load
 
 ### Run the image
 ```bash
-docker run -it nacc_image:latest /bin/bash
+docker run --env-file=env_file -it nacc_image:latest /bin/bash
 ```
+You need not always use the env_file to pass values for the environment variables. You may use the ``docker run -e`` option to pass the values from the command line.
