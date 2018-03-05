@@ -1,0 +1,5 @@
+USERNAME=nacc_user
+PASSWORD=password
+SMTP_USER=gator_name
+SMTP_PASSWORD=gator_password
+RECIPIENTS=rouknasengupta@gmail.com,rsengupta@ufl.edu
