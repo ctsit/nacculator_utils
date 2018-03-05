@@ -18,11 +18,11 @@ Update the credentials in the **env_file** file as below:
 vi env_file
 ```
 ```bash
-USERNAME=nacc_user
-PASSWORD=password
-SMTP_USER=gator_name
-SMTP_PASSWORD=gator_password
-RECIPIENTS=rouknasengupta@gmail.com,rsengupta@ufl.edu
+USERNAME=nacc_user  # Your NACC username.
+PASSWORD=password   # Your NACC password.
+SMTP_USER=gator_name  # Your gator username.
+SMTP_PASSWORD=gator_password  # Your gator password.
+RECIPIENTS=rouknasengupta@gmail.com,rsengupta@ufl.edu # Email IDs of your recipients.
 ```
 
 ### Building the docker image
