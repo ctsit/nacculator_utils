@@ -215,12 +215,12 @@ Install Chrome driver using
         $ Python sel.py upload
         
 * **getdata**
-To Get current Subjects from Nacc run
+    To Get current Subjects from Nacc run
 
-    $ Python sel.py getdata
+        $ Python sel.py getdata
 
 * **Report**
-Gets report from Nacc. Extract the necessary Data from PDF and sends a Email. Use Docker to run this.
+    Gets report from Nacc. Extract the necessary Data from PDF and sends a Email. Use Docker to run this.
     
-    $ Python sel.py report
+        $ Python sel.py report
 * Resources for uds3 fvp forms are available [here](https://www.alz.washington.edu/NONMEMBER/UDS/DOCS/VER3/).
