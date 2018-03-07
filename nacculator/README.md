@@ -201,18 +201,26 @@ working directory called `corrected`._
 HOW TO GET CURRENT_DB.CSV OR UPLOAD DATA TO NACC
 ------------------------------------------------
 
-_Note: Install Chrome Driver to run Selenium on Chrome. Update packet_config.ini_
+Note: Install Chrome Driver to run Selenium on Chrome. Update packet_config.ini , smtp_config_example.ini
+
+Go to get_current_data folder and you can either upload a file or get current subjects in NACC
 
 Install Chrome driver using
 
     $ brew install chromedriver
-Go to get_current_data folder and you can either upload a file or get current subjects in NACC
 
-To Upload a file run
+* **Upload**
+    To Upload a file run
 
-    $ Python sel.py upload
-To Get current Subjects from Nacc run
+        $ Python sel.py upload
+        
+* **getdata**
+    To Get current Subjects from Nacc run
 
-    $ Python sel.py getdata
+        $ Python sel.py getdata
 
+* **Report**
+    Gets report from Nacc. Extract the necessary Data from PDF and sends an Email. Use Docker to run this.
+    
+        $ Python sel.py report
 * Resources for uds3 fvp forms are available [here](https://www.alz.washington.edu/NONMEMBER/UDS/DOCS/VER3/).
