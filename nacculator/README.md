@@ -220,7 +220,7 @@ Install Chrome driver using
         $ Python sel.py getdata
 
 * **Report**
-    Gets report from Nacc. Extract the necessary Data from PDF and sends a Email. Use Docker to run this.
+    Gets report from Nacc. Extract the necessary Data from PDF and sends an Email. Use Docker to run this.
     
         $ Python sel.py report
 * Resources for uds3 fvp forms are available [here](https://www.alz.washington.edu/NONMEMBER/UDS/DOCS/VER3/).
