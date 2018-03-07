@@ -1,6 +1,8 @@
 
 # NACC Report Generation using Docker
 
+It is used to get the reports and Email it. 
+
 ## Getting Started
 
 These instructions will help you build a docker image on your local machine from which you can spawn up and run a container that would automate the process of report generation.
