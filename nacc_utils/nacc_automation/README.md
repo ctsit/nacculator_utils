@@ -1,3 +1,20 @@
+HOW TO GET CURRENT_DB.CSV OR UPLOAD DATA TO NACC
+------------------------------------------------
+
+_Note: Install Chrome Driver to run Selenium on Chrome. Update packet_config.ini_
+
+Install Chrome driver using
+
+    $ brew install chromedriver
+Go to get_current_data folder and you can either upload a file or get current subjects in NACC
+
+To Upload a file run
+
+    $ python sel.py upload
+To Get current Subjects from Nacc run
+
+    $ python sel.py getdata
+
 
 # NACC Report Generation using Docker
 
