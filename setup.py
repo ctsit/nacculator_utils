@@ -6,24 +6,21 @@
 
 from setuptools import setup, find_packages
 
-VERSION="0.3.0"
+VERSION = "0.1.0"
+GITHUB_URL = "https://github.com/ctsit/nacculator_utils"
 
 setup(
     name="nacculator",
     version=VERSION,
-    author="Taeber Rapczak",
-    author_email="taeber@ufl.edu",
     maintainer="UF CTS-IT",
     maintainer_email="ctsit@ctsi.ufl.edu",
-    url="https://github.com/ctsit/nacculator",
-    license="BSD 2-Clause",
-    description="CSV to NACC's UDS3 format converter",
+    url="https://github.com/ctsit/nacculator_utils",
+    license="Apache2",
+    description="Tools for the NACCulator",
     keywords=["REDCap", "NACC", "UDS", "Clinical data"],
-    download_url="https://github.com/ctsit/nacculator/releases/tag/" + VERSION,
-
-    package_dir = {'nacc': 'nacc'},
-    packages = find_packages(),
-
+    download_url=GITHUB_URL + "/releases/tag/" + VERSION,
+    package_dir={'nacc': 'nacc'},
+    packages=find_packages(),
     entry_points={
         "console_scripts": [
             "redcap2nacc = nacc.redcap2nacc:main"

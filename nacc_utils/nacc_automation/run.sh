@@ -1,6 +1,5 @@
 Xvfb :99 -nolisten tcp -fbdir /var/run &
 pip install pyautogui
-cd /nacc_utils/get_current_data
 sed -i "s/<username>/$USERNAME/" packet_config_example.ini
 sed -i "s/<password>/$PASSWORD/" packet_config_example.ini
 sed -i "s/<gator_name>/$SMTP_USER/" smtp_config_example.ini  

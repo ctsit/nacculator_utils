@@ -8,10 +8,9 @@ RUN apt-get -y update
 RUN apt-get -y dist-upgrade
 RUN apt-get -y install python2.7 python-pip
 
-ADD ./nacc_utils /nacc_utils
-ADD ./run.sh /nacc_utils
-RUN chmod u+x /nacc_utils/run.sh
+ADD ./ /nacc_utils
 WORKDIR /nacc_utils
+RUN ls && chmod u+x run.sh
 
 RUN apt-get -y install scrot
 RUN apt-get -y install python-tk
