@@ -16,14 +16,13 @@ def read_config(config_path):
 
 def generate_report_csv(input_file):
 
-    cmd = 'pdf2txt.py -o out.xml ' + input_file
+    cmd = 'pdf2txt.py -A -o out.xml ' + input_file
     os.system(cmd)
     filename = 'out.xml'
 
     tree = ET.parse(filename)
     pages = tree.getroot()
     final_result = {}
-
     for iter in pages[0].findall('textbox'):
         # ADC IDs Total
         if iter.attrib['id'] == '35':
@@ -134,39 +133,39 @@ def generate_report_csv(input_file):
             missed['IV'] = ''.join(result)
 
         # Second column
-        if iter.attrib['id'] == '5':
+        if iter.attrib['id'] == '4':
             result = []
-            for t_iter in iter.findall('textline')[0].findall('text'):
+            for t_iter in iter.findall('textline')[2].findall('text'):
                 if t_iter.text.strip():
                     result.append(t_iter.text)
             expected['F1'] = ''.join(result)
 
             result = []
-            for t_iter in iter.findall('textline')[1].findall('text'):
+            for t_iter in iter.findall('textline')[3].findall('text'):
                 if t_iter.text.strip():
                     result.append(t_iter.text)
             completed['F1'] = ''.join(result)
 
             result = []
-            for t_iter in iter.findall('textline')[2].findall('text'):
+            for t_iter in iter.findall('textline')[4].findall('text'):
                 if t_iter.text.strip():
                     result.append(t_iter.text)
             in_person['F1'] = ''.join(result)
 
             result = []
-            for t_iter in iter.findall('textline')[3].findall('text'):
+            for t_iter in iter.findall('textline')[5].findall('text'):
                 if t_iter.text.strip():
                     result.append(t_iter.text)
             telephone['F1'] = ''.join(result)
 
             result = []
-            for t_iter in iter.findall('textline')[4].findall('text'):
+            for t_iter in iter.findall('textline')[6].findall('text'):
                 if t_iter.text.strip():
                     result.append(t_iter.text)
             missed['F1'] = ''.join(result)
 
         # Third column
-        if iter.attrib['id'] == '7':
+        if iter.attrib['id'] == '6':
             result = []
             for t_iter in iter.findall('textline')[0].findall('text'):
                 if t_iter.text.strip():
