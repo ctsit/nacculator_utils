@@ -8,18 +8,19 @@ RUN apt-get -y update
 RUN apt-get -y dist-upgrade
 RUN apt-get -y install python2.7 python-pip
 
+ADD xvfb.init /etc/init.d/xvfb
+RUN chmod +x /etc/init.d/xvfb
+RUN update-rc.d xvfb defaults
+
 ADD ./ /nacc_utils
 WORKDIR /nacc_utils
-RUN ls && chmod u+x run.sh
+RUN chmod u+x run.sh
 
 RUN apt-get -y install scrot
 RUN apt-get -y install python-tk
 RUN apt-get -y install python-dev
-RUN Xvfb :99 -nolisten tcp -fbdir /var/run &
-RUN pip install --upgrade pip
-RUN pip install pdfminer
-RUN pip install python-xlib
-RUN pip install selenium
-RUN pip install jinja2
+RUN pip install --upgrade pip; hash -r pip;
+RUN pip install pdfminer python-xlib selenium jinja2
+RUN xvfb-run pip install pyautogui
 
 ENTRYPOINT ["/bin/bash", "-c", "./run.sh"] 
