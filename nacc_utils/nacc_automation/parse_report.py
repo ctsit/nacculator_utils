@@ -1,8 +1,8 @@
+# -*- encoding: utf-8 -*-
 import sys
 import os
 import xml.etree.ElementTree as ET
 import ConfigParser
-from email.mime.text import MIMEText
 from jinja2 import Environment
 
 import send_email as sm
@@ -226,6 +226,10 @@ def generate_report_csv(input_file):
         <title>{{ title }}</title>
     </head>
     <body>
+    <p>To view today's or any previous reports, please go here:</p>
+    <p>https://drive.google.com/drive/folders/1f9LmoC_4SiJBhbLd8ZqHA9BeajinmByr</p>
+    <p>Summary data can be found here:</p>
+    <p>https://docs.google.com/spreadsheets/d/11C-xzunVZnbT_beAHh870S3YtPHjH6OTM0we7oe2o0s/edit#gid=0</p>
     <table style="width:100%"; border="1">
     <!-- table header -->
     {% if final_result %}
@@ -244,7 +248,7 @@ def generate_report_csv(input_file):
     </table>
     <br>
     <br>
-    <br>    
+    <br>
     <table style="width:100%"; border="1">
     <caption>Cumulative missed visit rate</caption>
     <thead>
@@ -294,10 +298,9 @@ def generate_report_csv(input_file):
         </tr>
     </tbody>
     </table>
-    
     <br>
     <br>
-    <br>    
+    <br>
     <table style="width:100%"; border="1">
     <caption>Imaging stored at NACC</caption>
     <thead>
@@ -326,19 +329,14 @@ def generate_report_csv(input_file):
     """  # Our HTML Template
 
     # Create a text/html message from a rendered template
-    msg = MIMEText(
-        Environment().from_string(TEMPLATE).render(
+    msg = Environment().from_string(TEMPLATE).render(
             title='UDS REPORT',
             final_result=final_result,
             page2_result=page2_result,
             page3_result=page3_result
-        ), "html"
-    )
+        )
 
-    config = read_config("smtp_config_example.ini")
-    recipient = config.get('recipient_list', 'hcv_recipient')
-    recipient = recipient.split(",")
-    sm.send_email(recipient, 'UDS REPORT', msg)
+    sm.send_email(subject='UDS REPORT', message=msg)
 
 
 def main(argc):
