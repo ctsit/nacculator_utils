@@ -1,0 +1,8 @@
+Jinja2==2.10
+selenium==3.12.0
+pyobjc==4.2.1
+pyobjc-core==4.2.1
+PyAutoGUI==0.9.36
+#For NACCulator_runner
+git+https://github.com/ctsit/nacculator.git
+git+https://github.com/ctsit/cappy.git
