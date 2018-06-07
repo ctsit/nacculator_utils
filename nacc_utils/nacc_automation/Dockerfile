@@ -8,9 +8,6 @@ RUN apt-get -y update
 RUN apt-get -y dist-upgrade
 RUN apt-get -y install python2.7 python-pip
 
-ADD xvfb.init /etc/init.d/xvfb
-RUN chmod +x /etc/init.d/xvfb
-RUN update-rc.d xvfb defaults
 
 ADD ./ /nacc_utils
 WORKDIR /nacc_utils
