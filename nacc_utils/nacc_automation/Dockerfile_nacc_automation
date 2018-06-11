@@ -1,6 +1,8 @@
 FROM selenium/node-chrome:latest
 
 USER root
+ARG script_to_run
+ENV SCRIPT $script_to_run
 
 ENV DISPLAY ":99.0"
 
@@ -20,4 +22,5 @@ RUN pip install --upgrade pip; hash -r pip;
 RUN pip install pdfminer python-xlib selenium jinja2
 RUN xvfb-run pip install pyautogui
 
-ENTRYPOINT ["/bin/bash", "-c", "./run.sh"] 
+RUN echo "$SCRIPT"
+ENTRYPOINT ["/bin/bash", "-c", "./run.sh", "getdata"]
