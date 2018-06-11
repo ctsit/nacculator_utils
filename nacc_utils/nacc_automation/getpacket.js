@@ -25,4 +25,7 @@ packets.forEach(function(infoArray, index){
 
 var encodedUri = encodeURI(csvContent);
 
-window.open(encodedUri);
+var link = document.createElement("a");
+link.href = 'data:text/csv,' + encodedUri;
+link.download = "subjects.csv";
+link.click();
