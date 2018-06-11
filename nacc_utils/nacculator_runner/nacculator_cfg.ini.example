@@ -1,13 +1,13 @@
 [DEFAULT]
 
 [cappy]
-token: Your REDCAP Token
-redcap_server: Your Redcap Server
+token: <your_redcap_token>
+redcap_server: <your_redcap_server>
 
 #[filters] - Each section is named after the corresponding function name
 #in filters.py
 [filter_clean_ptid]
-filepath: path/to/current-db-subjects.csv
+filepath: <path/to/current-subjects.csv>
 
 [filter_fix_headers]
 c1s_2a_npsylan: c1s_2_npsycloc

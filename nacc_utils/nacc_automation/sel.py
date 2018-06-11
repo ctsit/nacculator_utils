@@ -16,7 +16,6 @@ def read_config(config_path):
     config.read(config_path)
     return config
 
-
 def upload_file(driver,filepath,email):
     elem1 = driver.find_element_by_name("UPLOADR_X")
     driver.execute_script("(arguments[0]).click();", elem1)
@@ -38,6 +37,7 @@ def get_nacc_data(driver):
     driver.execute_script("(arguments[0]).click();", elem)
     # The getPacket.js fetches data from Nacc
     driver.execute_script(open("./getpacket.js").read())
+    time.sleep(10)
     return
 
 
@@ -48,12 +48,12 @@ def replace_link(element, username, password):
     return link
 
 
-def generate_report(driver, username, password):
+def generate_report(driver):
     elem = driver.find_element_by_name("certc_X")
     # Above element is Hidden. To click the hidden element we are making use of Js
     driver.execute_script("(arguments[0]).click();", elem)
     elem1 = driver.find_element_by_name("TYPEP")
-    driver.execute_script("(arguments[0]).click();",elem1)
+    driver.execute_script("(arguments[0]).click();", elem1)
     pyautogui.hotkey('ctrl', 's')
     time.sleep(5)
     time.sleep(5)
@@ -96,8 +96,10 @@ def main(argv):
             upload_file(driver,filepath,email)
         if nacc_options == "getdata":
             get_nacc_data(driver)
+            new_filename = downloadpath + '/' + 'subject_status_' + datetime.datetime.now().strftime("%Y%m%d") + '.csv'
+            shutil.move(os.path.join(downloadpath, 'subjects.csv'), new_filename)
         if nacc_options == "report":
-            generate_report(driver,username,password)
+            generate_report(driver)
             new_filename = downloadpath + '/' + 'broker93_' + datetime.datetime.now().strftime("%Y%m%d") + '.pdf'
             shutil.move(os.path.join(downloadpath, 'broker93.pdf'), new_filename)
             # output_file = config.get('reportpath', 'path') +

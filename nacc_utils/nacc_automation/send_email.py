@@ -39,6 +39,7 @@ def send_email(subject, message):
     recipient = config.get('recipient_list', 'recipients')
     recipient = recipient.split(",")
     mime_message = MIMEText(message.encode('utf-8'), 'html', 'utf-8')
+    print("Sending email to: ")
     print(recipient)
 
     # set up the SMTP server
