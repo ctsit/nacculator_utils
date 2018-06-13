@@ -8,8 +8,6 @@ import pyautogui
 import shutil
 from selenium import webdriver
 
-import parse_report
-
 
 def read_config(config_path):
     config = ConfigParser.ConfigParser()
@@ -28,6 +26,8 @@ def upload_file(driver,filepath,email):
         elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[2]/td[2]/input")
         driver.execute_script("(arguments[0]).click();",elem)
         driver.find_element_by_name("EMAIL").send_keys(email)
+        elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[2]/td[2]/pre/b/input")
+	driver.execute_script("(arguments[0]).click();",elem)
     return
 
 
@@ -36,6 +36,7 @@ def get_nacc_data(driver):
     # Above element is Hidden. To click the hidden element we are making use of Js
     driver.execute_script("(arguments[0]).click();", elem)
     # The getPacket.js fetches data from Nacc
+    print("Trying to download")
     driver.execute_script(open("./getpacket.js").read())
     time.sleep(10)
     return
@@ -95,10 +96,10 @@ def main(argv):
         if nacc_options == "upload":
             upload_file(driver,filepath,email)
         if nacc_options == "getdata":
+            print("getting data")
             get_nacc_data(driver)
-            new_filename = downloadpath + '/' + 'subject_status_' + datetime.datetime.now().strftime("%Y%m%d") + '.csv'
-            shutil.move(os.path.join(downloadpath, 'subjects.csv'), new_filename)
         if nacc_options == "report":
+            import parse_report
             generate_report(driver)
             new_filename = downloadpath + '/' + 'broker93_' + datetime.datetime.now().strftime("%Y%m%d") + '.pdf'
             shutil.move(os.path.join(downloadpath, 'broker93.pdf'), new_filename)

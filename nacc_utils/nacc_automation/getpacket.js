@@ -8,24 +8,20 @@ for(i=6; i < statusList.length; i++){
 
     csv = [label[3], label[6], label[10], label[19]];
 
-    packets[i] = csv;}
+    packets.push(csv);}
 
+var csvContent;
 
-var csvContent = "data:text/csv;charset=utf-8,";
+csvContent = packets.map(packet => packet.join(",")).join("\n");
 
-packets.forEach(function(infoArray, index){
-
-
-    dataString = infoArray.join(",");
-
-    csvContent += index < packets.length ? dataString+ "\n" : dataString;
-
-});
-
+console.log(csvContent);
 
 var encodedUri = encodeURI(csvContent);
 
 var link = document.createElement("a");
+
 link.href = 'data:text/csv,' + encodedUri;
-link.download = "subjects.csv";
+
+link.download = "subject_status.csv";
+
 link.click();
