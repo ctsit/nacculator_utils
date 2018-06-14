@@ -12,7 +12,7 @@ RUN echo "deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-security main restr
 RUN apt update && apt-get -y install python2.7 python-pip git
 RUN apt-get clean && apt-get update 
 COPY nacculator_runner/ /nacc_utils/
-COPY nacc_automation/sel.py nacc_automation/packet_config_example.ini nacc_automation/getpacket.js /nacc_utils/
+COPY nacc_automation/sel.py nacc_automation/packet_config_example.ini nacc_automation/getpacket.js nacc_automation/send_email.py nacc_automation/smtp_config_example.ini /nacc_utils/
 
 WORKDIR /nacc_utils
 RUN chmod u+x run.sh

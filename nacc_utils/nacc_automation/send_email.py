@@ -2,9 +2,13 @@ import smtplib
 import errno
 import sys
 import ConfigParser
+import os
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email.encoders import encode_base64
+import mimetypes
 
 CONFIG_PATH = "./smtp_config_example.ini"
 
@@ -25,7 +29,7 @@ def read_config(config_path):
     return config
 
 
-def send_email(subject, message):
+def send_email(subject, message, send_file=None):
     """
     This functions generates an email with a given subject and
     html formatted message.
@@ -62,9 +66,30 @@ def send_email(subject, message):
         # add in the message body
         msg.attach(mime_message)
 
+        if send_file is not None:
+            mimetype, encoding = mimetypes.guess_type(send_file)
+            mimetype = mimetype.split('/', 1)
+            fp = open(send_file, 'rb')
+            attachment = MIMEBase(mimetype[0], mimetype[1])
+            attachment.set_payload(fp.read())
+            fp.close()
+            encode_base64(attachment)
+            attachment.add_header('Content-Disposition', 'attachment',
+                                        filename=os.path.basename(send_file))
+            msg.attach(attachment)
+
         # send the message via the server set up earlier.
         s.sendmail(my_address, email, msg.as_string())
         del msg
 
     # Terminate the SMTP session and close the connection
     s.quit()
+
+if __name__ == "__main__":
+    subject = sys.argv[1]
+    message = sys.argv[2]
+
+    if len(sys.argv) == 4:
+        send_file = sys.argv[3]
+
+    send_email(subject, message, send_file)
