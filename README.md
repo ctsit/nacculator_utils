@@ -23,7 +23,9 @@ The following commands are assuming you are in the top level directory and
 that virtualenv is installed.
 
 `virtualenv venv -p=python2.7`
+
 `source venv bin activate`
+
 `pip install -r requirements.txt`
 
 ## Installing
