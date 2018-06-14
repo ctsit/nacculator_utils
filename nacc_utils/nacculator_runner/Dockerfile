@@ -22,7 +22,7 @@ RUN apt-get -y install python-tk
 RUN apt-get -y install python-dev
 RUN pip install --upgrade pip; hash -r pip;
 RUN pip install pdfminer python-xlib selenium jinja2
-RUN pip install git+https://github.com/devmattm/nacculator.git@quick_fixes git+https://github.com/ctsit/cappy.git
+RUN pip install git+https://github.com/ctsit/nacculator.git git+https://github.com/ctsit/cappy.git
 RUN xvfb-run pip install pyautogui
 
 ENTRYPOINT ["/bin/bash", "-c", "./run.sh", "getdata"]
