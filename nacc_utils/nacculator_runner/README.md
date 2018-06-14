@@ -37,6 +37,7 @@ running it.
 
 Build the image like so:
 `docker build -f Dockerfile -t nacc_automation:latest ..`
+
 Note: in order to import some libraries from other parts of this repo, the 
 Docker build context (..) had to be set one directory back. This allows us 
 to utilize the sel.py and config files in the other directory.
@@ -44,16 +45,16 @@ to utilize the sel.py and config files in the other directory.
 Once the image is built, you may save it as a tar file and share it.
 
 ```bash
-docker save nacc_image:latest | gzip -c > nacc_image.tar.gz
+docker save nacc_automation:latest | gzip -c > nacc_automation.tar.gz
 ```
 For loading the image from tar.gz in another machine:
 
 ```bash
-gunzip -c nacc_image.tar.gz | docker load
+gunzip -c nacc_automation.tar.gz | docker load
 ```
 or
 ```bash
-docker load < nacc_image.tar.gz
+docker load < nacc_automation.tar.gz
 ```
 Note: repeat uploads creates a new image with the name nacc_image:latest
 and gives the previous image a blank name. There might be value in deleting
