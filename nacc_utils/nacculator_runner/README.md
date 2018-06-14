@@ -34,13 +34,32 @@ NACCulator on the data, and finally uploading the output into the NACC
 website.
 To get started, make sure Docker is installed on your system, or the system
 running it.
+
 Build the image like so:
 `docker build -f Dockerfile -t nacc_automation:latest ..`
 Note: in order to import some libraries from other parts of this repo, the 
 Docker build context (..) had to be set one directory back. This allows us 
 to utilize the sel.py and config files in the other directory.
 
-To run the image:
+Once the image is built, you may save it as a tar file and share it.
+
+```bash
+docker save nacc_image:latest | gzip -c > nacc_image.tar.gz
+```
+For loading the image from tar.gz in another machine:
+
+```bash
+gunzip -c nacc_image.tar.gz | docker load
+```
+or
+```bash
+docker load < nacc_image.tar.gz
+```
+Note: repeat uploads creates a new image with the name nacc_image:latest
+and gives the previous image a blank name. There might be value in deleting
+old images.
+
+# To run the image:
 docker run --env-file=.env_file -v <your_path>/nacculator_utils/nacc_utils/nacculator_runner/runs:/nacc_utils/runs/ -it nacc_automation:latest /bin/bash
 Note: the volume can be whatever directory you want locally, but must be mapped to
 /nacc_utils/runs/ inside the container.
