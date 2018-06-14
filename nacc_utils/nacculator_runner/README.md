@@ -1,4 +1,6 @@
 # Automating a NACCulator run
+`run_filters.py`
+
 This python script is a convenience tool used to automate grabbing
 a dataset from a REDCap instance and running the data through NACCulator's 
 filters in preparation for actually running NACCulator on the data. 

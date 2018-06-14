@@ -54,19 +54,24 @@ def run_all_filters(folder_name, config):
 
         print >> sys.stderr, "--------------Updating fields--------------------"
         input_path = os.path.join(folder_name, "default.csv")
-        output_path = os.path.join(folder_name, "Update_field.csv")
+        output_path = os.path.join(folder_name, "update_fields.csv")
         with open (output_path,'w') as output_ptr, open (input_path,'r') as input_ptr:
             filter_update_field(input_ptr, config, output_ptr)
 
+        print >> sys.stderr, "--------------Fixing Visit Dates--------------------"
+        input_path = os.path.join(folder_name, "update_fields.csv")
+        output_path = os.path.join(folder_name, "proper_visitdate.csv")
+        with open (output_path,'w') as output_ptr, open (input_path,'r') as input_ptr:
+            filter_fix_visitdate(input_ptr, config, output_ptr)
         print >> sys.stderr, "--------------Removing Unnecessary Records--------------------"
-        input_path = os.path.join(folder_name, "Update_field.csv")
+        input_path = os.path.join(folder_name, "proper_visitdate.csv")
         output_path = os.path.join(folder_name, "CleanedPtid_Update.csv")
         with open (output_path,'w') as output_ptr, open (input_path,'r') as input_ptr:
             filter_remove_ptid(input_ptr, config, output_ptr)
 
         print >> sys.stderr, "--------------Removing Records without VisitDate--------------------"
         input_path = os.path.join(folder_name, "CleanedPtid_Update.csv")
-        output_path = os.path.join(folder_name, "final_Update.csv")
+        output_path = os.path.join(folder_name, "final_update.csv")
         with open (output_path,'w') as output_ptr, open (input_path,'r') as input_ptr:
             filter_eliminate_empty_date(input_ptr, config, output_ptr)
 
@@ -116,21 +121,26 @@ def get_data_from_redcap(folder_name, config):
 
 
 if __name__ == '__main__':
-    currentdate = datetime.datetime.now().strftime('%m-%d-%Y')
-    folder_name = "run_" + currentdate
+    # Reading from Config and Accessing the necessary Data
+    config_path = sys.argv[1]
+    config = read_config(config_path)
+
+    if len(sys.argv) == 3:
+        folder_name = sys.argv[2]
+    else:
+        currentdate = datetime.datetime.now().strftime('%m-%d-%Y')
+        folder_name = "run_" + currentdate
+
     print >> sys.stderr, "Recent folder " + folder_name
 
     current_directory = os.getcwd()
-    identified_folder = os.path.join(current_directory, folder_name)
+    identified_folder = os.path.join(current_directory,"runs", folder_name)
 
     if not os.path.exists(identified_folder):
         recent_run_folder(identified_folder)
 
-# Reading from Config and Accessing the necessary Data
-    config_path = sys.argv[1]
-    config = read_config(config_path)
 
-    get_data_from_redcap(folder_name, config)
-    run_all_filters(folder_name, config_path)
+    get_data_from_redcap(identified_folder, config)
+    run_all_filters(identified_folder, config_path)
 
     exit()
