@@ -67,16 +67,28 @@ Note: the volume can be whatever directory you want locally, but must be mapped 
 Finally, there is .env_file.
 This file contains environment variables which will be set inside the container
 when it is turned on. Here is an example of what it looks like:
-`NACC_USERNAME= <your nacc username>
+```
+NACC_USERNAME= <your nacc username>
+
 NACC_PASSWORD= <your nacc password>
+
 NACC_EMAIL=<email used for uploading>
+
 NACC_UPLOAD_PATH=/nacc_utils/new_nacc_upload.txt ---> File being uploaded, keep this!
+
 REDCAP_TOKEN= <your private redcap token>
+
 REDCAP_SERVER=https://redcap.school.edu/redcap/api/
+
 SUBJECT_FILE_PATH=/tmp/subject_status.csv ---> File downloaded from NACC, keep this!
+
 SMTP_HOST=<your smtp host server>
+
 SMTP_PORT=<your smtp host server port>
+
 SMTP_FROM=<from address>
+
 SMTP_PASSWORD=<from addr password, if needed>
+
 SMTP_TO=<list of who email is going to>
-`
+```
