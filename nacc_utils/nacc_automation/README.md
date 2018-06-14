@@ -6,9 +6,11 @@ for us. These scripts are reliable as of 2018-06-07 meaning that the code is in
 sync with the current html used to render the NACC website.
 
 There are two automated functions here:
+
     * upload: This function takes the uploadpath/path from the 
     packet_config_example.ini as well as the NACC credentials 
     and attempts to upload a subject list to the NACC system.
+    
     * getdata: This function uses the NACC credentials to get to the "finalize"
     page in order to grab a copy of the subject list with status. This list
     is used in NACCulator while processing the raw data and filtering records.
