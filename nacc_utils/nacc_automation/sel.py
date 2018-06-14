@@ -22,12 +22,13 @@ def upload_file(driver,filepath,email):
     if "There are errors click the button below" in driver.page_source:
         print "errors upload new file"
     else:
-        print "file uploaded Succesfully"
+        print "Attempting to upload: " + filepath
         elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[2]/td[2]/input")
         driver.execute_script("(arguments[0]).click();",elem)
         driver.find_element_by_name("EMAIL").send_keys(email)
         elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[2]/td[2]/pre/b/input")
 	driver.execute_script("(arguments[0]).click();",elem)
+        print "file uploaded Succesfully"
     return
 
 
