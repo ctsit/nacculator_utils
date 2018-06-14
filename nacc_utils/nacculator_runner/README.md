@@ -55,4 +55,9 @@ NACC_UPLOAD_PATH=/nacc_utils/new_nacc_upload.txt ---> File being uploaded, keep 
 REDCAP_TOKEN= <your private redcap token>
 REDCAP_SERVER=https://redcap.school.edu/redcap/api/
 SUBJECT_FILE_PATH=/tmp/subject_status.csv ---> File downloaded from NACC, keep this!
+SMTP_HOST=<your smtp host server>
+SMTP_PORT=<your smtp host server port>
+SMTP_FROM=<from address>
+SMTP_PASSWORD=<from addr password, if needed>
+SMTP_TO=<list of who email is going to>
 `
