@@ -1,50 +1,42 @@
-
-# NACC Report Generation using Docker
-
-It is used to get the reports and Email it. 
+# NACCulator Utilities 
+This project is a suite of tools and utilities used to help run the 
+NACCulator tool. As of this writing, they include a tool to automatically
+pull data from REDCap and run the NACCulator filters, automatically 
+downloading the list of subjects and their status found on the NACC website,
+automatically taking the output of NACCulator and trying to upload it,
+and finally parsing a NACC report and sending an email. 
 
 ## Getting Started
+This project is not really meant to be used as a library just yet,
+it mostly functions as a set of scripts or runnable containers. Currently,
+there is no setup.py to just install it. 
+To get started:
+`git clone https://github.com/ctsit/nacculator_utils.git`
 
-These instructions will help you build a docker image on your local machine from which you can spawn up and run a container that would automate the process of report generation.
+## Prerequisites
+These tools were built and tested using:
+  * python2
+  * Docker CE 18.03.1-ce-mac65 (24312)
+Please look at the requirements.txt file included for additional requirements.
+Also, consider if you need to create a virtual environment for your setup.
+The following commands are assuming you are in the top level directory and 
+that virtualenv is installed.
 
-First clone the project in your local.
+`virtualenv venv -p=python2.7`
 
-```
-git clone -b nacc_docker https://github.com/roukna/nacculator.git
-```
+`source venv bin activate`
 
-### Prerequisites
+`pip install -r requirements.txt`
 
-Update the credentials in the **env_file** file as below:
-```bash
-vi env_file
-```
-```bash
-USERNAME=nacc_user  # Your NACC username.
-PASSWORD=password   # Your NACC password.
-SMTP_USER=gator_name  # Your gator username.
-SMTP_PASSWORD=gator_password  # Your gator password.
-RECIPIENTS=rouknasengupta@gmail.com,rsengupta@ufl.edu # Email IDs of your recipients.
-```
+## Installing
+There are seperate README files for the different parts of this project with more specific details.
 
-### Building the docker image
+## Versioning
+We use SemVer for versioning. For the versions available, see the tags on this repository.
 
-```bash
-docker build -t nacc_image:latest .
-```
-Once the image is built, you may save it as a tar file and share it.
+## Authors
+Please look at the AUTHORS list to see the most up-to-date list of authors on
+this project
 
-```bash
-docker save nacc_image:latest | gzip -c > nacc_image.tar.gz
-```
-For loading the image from tar.gz in another machine:
-
-```bash
-gunzip -c nacc_image.tar.gz | docker load
-```
-
-### Run the image
-```bash
-docker run --env-file=env_file -it nacc_image:latest /bin/bash
-```
-You need not always use the env_file to pass values for the environment variables. You may use the ``docker run -e`` option to pass the values from the command line.
+## License
+This project is licensed under the APACHE2 License - see the LICENSE file for details

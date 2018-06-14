@@ -1,0 +1,2 @@
+pip install git+https://github.com/ctsit/nacculator.git
+pip install git+https://github.com/ctsit/cappy.git
