@@ -230,25 +230,7 @@ def generate_report_csv(input_file):
     <p>https://drive.google.com/drive/folders/1f9LmoC_4SiJBhbLd8ZqHA9BeajinmByr</p>
     <p>Summary data can be found here:</p>
     <p>https://docs.google.com/spreadsheets/d/11C-xzunVZnbT_beAHh870S3YtPHjH6OTM0we7oe2o0s/edit#gid=0</p>
-    <table style="width:100%"; border="1">
-    <!-- table header -->
-    {% if final_result %}
-        <tr>
-            {% for key in final_result.keys() %}
-                <td> {{ key }} </td>
-            {% endfor %}
-        </tr>
-    <!-- table rows -->
-        <tr>
-            {% for value in final_result.values() %}
-                <td> {{ value }} </td>
-            {% endfor %}
-        </tr>
-    {% endif %}
-    </table>
-    <br>
-    <br>
-    <br>
+
     <table style="width:100%"; border="1">
     <caption>Cumulative missed visit rate</caption>
     <thead>
@@ -297,6 +279,25 @@ def generate_report_csv(input_file):
         <td></td>
         </tr>
     </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <table style="width:100%"; border="1">
+    <!-- table header -->
+    {% if final_result %}
+        <tr>
+            {% for key in final_result.keys() %}
+                <td> {{ key }} </td>
+            {% endfor %}
+        </tr>
+    <!-- table rows -->
+        <tr>
+            {% for value in final_result.values() %}
+                <td> {{ value }} </td>
+            {% endfor %}
+        </tr>
+    {% endif %}
     </table>
     <br>
     <br>

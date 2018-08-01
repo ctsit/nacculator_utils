@@ -113,6 +113,11 @@ def main(argv):
 
     except Exception as e:
         print e
+        if nacc_options == "report":
+            import send_email as sm
+            msg = 'Failed to generate report. Error: ' + e.msg
+            sm.send_email(subject='UDS REPORT', message=msg)
+
         # driver.close()
 
 
