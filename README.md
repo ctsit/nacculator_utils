@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/133712597.svg)](https://zenodo.org/badge/latestdoi/133712597)
+
 # NACCulator Utilities 
 This project is a suite of tools and utilities used to help run the 
 NACCulator tool. As of this writing, they include a tool to automatically
