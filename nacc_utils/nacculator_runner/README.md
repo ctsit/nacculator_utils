@@ -41,7 +41,7 @@ running it.
 
 Build the image like so:
 ```bash
-docker build -f Dockerfile -t nacc_uploader:1.2.0-nacculator_0.6.1 ..`
+docker build -f Dockerfile -t nacc_uploader:1.2.0-nacculator_0.6.1 ..
 ```
 
 *Note*: the naming convention is `nacc_uploader:{TAG}-nacculator_{RELEASE}`
