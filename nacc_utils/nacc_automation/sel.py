@@ -19,17 +19,21 @@ def upload_file(driver,filepath,email):
     driver.execute_script("(arguments[0]).click();", elem1)
     driver.find_element_by_name("FILEUP").send_keys(filepath)
     driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[2]/td[2]/font/center/button").click()
-    if "There are errors click the button below" in driver.page_source:
-        print "errors upload new file"
-    else:
+
+    #Try uploading file
+    try:
         print "Attempting to upload: " + filepath
-        elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[2]/td[2]/input")
-        driver.execute_script("(arguments[0]).click();",elem)
+        driver.find_element_by_css_selector("input[type='RADIO'][value='1']").click()
+        driver.find_element_by_name("TYPEUP").click()
         driver.find_element_by_name("EMAIL").send_keys(email)
         elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[2]/td[2]/pre/b/input")
-	driver.execute_script("(arguments[0]).click();",elem)
-        print "file uploaded Succesfully"
+        driver.execute_script("(arguments[0]).click();",elem)
+        print "File uploaded Succesfully"
+    #Error in input file or upload process
+    except:
+        print "Errors in uploading file"
     return
+
 
 
 def get_nacc_data(driver):
@@ -113,6 +117,11 @@ def main(argv):
 
     except Exception as e:
         print e
+        if nacc_options == "report":
+            import send_email as sm
+            msg = 'Failed to generate report. Error: ' + e.msg
+            sm.send_email(subject='UDS REPORT', message=msg)
+
         # driver.close()
 
 

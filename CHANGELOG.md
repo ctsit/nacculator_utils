@@ -1,3 +1,24 @@
+Changelog
+=========
+
+## [1.2.0] - 2019-05-17
+### Summary
+  Various updates for NACC changes.
+
+### Added
+ * Send e-mail when getting report fails (Naomi Braun)
+
+### Updated
+ * Update Jinja requirement (Taeber Rapczak)
+ * Update docker build instructions (Taeber Rapczak)
+ * Fix the test for uploading a file to NACC (Niraja Ganpule)
+
+
+## [1.1.0] - 2018-06-14
+### Summary
+  No changes. This was an apparent mistake in tagging.
+
+
 ## [1.0.0] - 2018-06-14
 ### Summary
   This is the initial version of NACCulator_utils.
