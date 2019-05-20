@@ -17,11 +17,9 @@ COPY nacc_automation/sel.py nacc_automation/packet_config_example.ini nacc_autom
 WORKDIR /nacc_utils
 RUN chmod u+x run.sh
 
-RUN apt-get -y install scrot
-RUN apt-get -y install python-tk
-RUN apt-get -y install python-dev
-RUN pip install --upgrade pip; hash -r pip;
-RUN pip install pdfminer python-xlib selenium jinja2
+RUN apt-get -y install scrot python-tk python-dev
+RUN pip install --upgrade pip; hash -r pip
+RUN pip install pdfminer==20140328 python-xlib==0.25 selenium==3.141.0 jinja2==2.10.1
 RUN pip install git+https://github.com/ctsit/nacculator.git git+https://github.com/ctsit/cappy.git
 RUN xvfb-run pip install pyautogui==0.9.39
 
