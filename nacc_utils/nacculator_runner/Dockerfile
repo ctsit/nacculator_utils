@@ -23,6 +23,6 @@ RUN apt-get -y install python-dev
 RUN pip install --upgrade pip; hash -r pip;
 RUN pip install pdfminer python-xlib selenium jinja2
 RUN pip install git+https://github.com/ctsit/nacculator.git git+https://github.com/ctsit/cappy.git
-RUN xvfb-run pip install pyautogui
+RUN xvfb-run pip install pyautogui==0.9.39
 
 ENTRYPOINT ["/bin/bash", "-c", "./run.sh", "getdata"]
