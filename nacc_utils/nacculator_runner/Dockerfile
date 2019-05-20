@@ -1,4 +1,4 @@
-FROM selenium/node-chrome:latest
+FROM selenium/node-chrome:3.14.0-europium
 
 USER root
 
