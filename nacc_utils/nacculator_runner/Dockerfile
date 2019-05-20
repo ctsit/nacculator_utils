@@ -3,12 +3,6 @@ FROM selenium/node-chrome:3.14.0-europium
 USER root
 
 ENV DISPLAY ":99.0"
-RUN rm -rf /etc/apt/sources.list
-RUN echo "deb mirror://mirrors.ubuntu.com/mirrors.txt xenial main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb-src mirror://mirrors.ubuntu.com/mirrors.txt xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-backports main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-security main restricted universe multiverse" >> /etc/apt/sources.list
 RUN apt update && apt-get -y install python2.7 python-pip git
 RUN apt-get clean && apt-get update
 COPY nacculator_runner/ /nacc_utils/
