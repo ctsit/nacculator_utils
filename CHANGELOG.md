@@ -1,6 +1,18 @@
 Changelog
 =========
 
+## [1.3.0] - 2019-05-23
+### Summary
+  Peg versions and fix config file.
+
+### Added
+  * Add header filters to config file via run.sh
+
+### Updated
+  * Peg version of Coker image
+  * Peg version of pyautogui
+  * Consolidate apt cmds
+
 ## [1.2.0] - 2019-05-17
 ### Summary
   Various updates for NACC changes.
