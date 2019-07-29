@@ -89,7 +89,7 @@ def main(argv):
         str = "https://"+username+":"+password+"@www.alz.washington.edu/MEMBER/sitesub.htm"
         driver.get(str)
         # Get the 1Florida ADRC project url
-        nacc_project_elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[1]/td[2]/font/ul[1]/li[5]/a")
+        nacc_project_elem = driver.find_element_by_xpath("/html/body/table[2]/tbody/tr[1]/td[2]/font/ul[1]/li[6]/a")
         florida_adrc_link = replace_link(nacc_project_elem, username, password)
         driver.get(florida_adrc_link)
         # get the uds link
