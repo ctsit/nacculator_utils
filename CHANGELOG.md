@@ -1,6 +1,13 @@
 Changelog
 =========
 
+## [1.4.0] - 2019-09-05
+### Summary
+  Fix selenium code to more reliably access 1Florida page.
+
+### Updated
+  * Selenium now explicitly seeks out 1Florida NACC page
+
 ## [1.3.0] - 2019-05-23
 ### Summary
   Peg versions and fix config file.
