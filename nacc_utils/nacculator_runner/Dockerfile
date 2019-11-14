@@ -1,4 +1,4 @@
-FROM selenium/node-chrome:3.14.0-europium
+FROM selenium/node-chrome:3.141.59-vanadium
 
 USER root
 
