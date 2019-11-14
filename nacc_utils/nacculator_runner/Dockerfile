@@ -3,7 +3,7 @@ FROM selenium/node-chrome:3.141.59-vanadium
 USER root
 
 ENV DISPLAY ":99.0"
-RUN apt update && apt-get -y install python2.7 python-pip git
+RUN apt update && apt-get -y install python3.6 python-pip git
 COPY nacculator_runner/ /nacc_utils/
 COPY nacc_automation/sel.py nacc_automation/packet_config_example.ini nacc_automation/getpacket.js nacc_automation/send_email.py nacc_automation/smtp_config_example.ini /nacc_utils/
 
