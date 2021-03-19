@@ -1,4 +1,4 @@
-Jinja2==2.10.1
+Jinja2==2.11.3
 selenium==3.12.0
 pyobjc==4.2.1
 pyobjc-core==4.2.1
